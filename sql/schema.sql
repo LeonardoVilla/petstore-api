@@ -1,0 +1,3 @@
+CREATE TABLE IF NOT EXISTS pets (id BIGSERIAL PRIMARY KEY,name VARCHAR(100) NOT NULL,photo_urls JSONB NOT NULL DEFAULT '[]',status VARCHAR(20) NOT NULL DEFAULT 'available' CHECK (status IN ('available','pending','sold')),category JSONB,tags JSONB NOT NULL DEFAULT '[]');
+CREATE TABLE IF NOT EXISTS users (id BIGSERIAL PRIMARY KEY,username VARCHAR(80) NOT NULL UNIQUE,first_name TEXT,last_name TEXT,email TEXT,phone TEXT,user_status INTEGER NOT NULL DEFAULT 0);
+CREATE TABLE IF NOT EXISTS orders (id BIGSERIAL PRIMARY KEY,pet_id BIGINT NOT NULL,quantity INTEGER NOT NULL DEFAULT 1,ship_date TEXT,status VARCHAR(20) NOT NULL DEFAULT 'placed' CHECK (status IN ('placed','approved','delivered')),complete BOOLEAN NOT NULL DEFAULT FALSE);
